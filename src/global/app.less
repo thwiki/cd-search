@@ -1,0 +1,100 @@
+/* Document Level Styles */
+
+/*
+  The imports below are needed to include our light dom css for global styles such as fonts and colors.
+  You can comment out any of these imports if you do not need that css. For example, if you have your own
+  global font family css then you can comment out the typography.css import.
+*/
+
+/** Core CSS required for ionic components to work property */
+@import '~@ionic/core/css/core.css';
+
+/** Basic CSS for apps built with Ionic */
+@import '~@ionic/core/css/normalize.css';
+@import '~@ionic/core/css/structure.css';
+@import '~@ionic/core/css/typography.css';
+
+/** Optional CSS utils that can be commented out */
+@import '~@ionic/core/css/padding.css';
+@import '~@ionic/core/css/float-elements.css';
+@import '~@ionic/core/css/text-alignment.css';
+@import '~@ionic/core/css/text-transformation.css';
+@import '~@ionic/core/css/flex-utils.css';
+
+/*
+  The CSS Variables below can be used to theme your app.
+  For more info on CSS variables check out:
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
+
+  More info about color theming using Ionic:
+  https://ionicframework.com/docs/theming/color-generator
+*/
+
+:root {
+	--ion-color-primary: #f2b040;
+	--ion-color-primary-rgb: 242, 176, 64;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0, 0, 0;
+	--ion-color-primary-shade: #d59b38;
+	--ion-color-primary-tint: #f3b853;
+
+	--ion-color-secondary: #ff9df0;
+	--ion-color-secondary-rgb: 255, 157, 240;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0, 0, 0;
+	--ion-color-secondary-shade: #e08ad3;
+	--ion-color-secondary-tint: #ffa7f2;
+
+	--ion-color-tertiary: #447edd;
+	--ion-color-tertiary-rgb: 68, 126, 221;
+	--ion-color-tertiary-contrast: #ffffff;
+	--ion-color-tertiary-contrast-rgb: 255, 255, 255;
+	--ion-color-tertiary-shade: #3c6fc2;
+	--ion-color-tertiary-tint: #578be0;
+
+	--ion-color-success: #a8e4ad;
+	--ion-color-success-rgb: 168, 228, 173;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0, 0, 0;
+	--ion-color-success-shade: #94c998;
+	--ion-color-success-tint: #b1e7b5;
+
+	--ion-color-warning: #cf8300;
+	--ion-color-warning-rgb: 207, 131, 0;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0, 0, 0;
+	--ion-color-warning-shade: #b67300;
+	--ion-color-warning-tint: #d48f1a;
+
+	--ion-color-danger: #e69f9f;
+	--ion-color-danger-rgb: 230, 159, 159;
+	--ion-color-danger-contrast: #000000;
+	--ion-color-danger-contrast-rgb: 0, 0, 0;
+	--ion-color-danger-shade: #ca8c8c;
+	--ion-color-danger-tint: #e9a9a9;
+
+	--ion-color-dark: #252525;
+	--ion-color-dark-rgb: 37, 37, 37;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255, 255, 255;
+	--ion-color-dark-shade: #212121;
+	--ion-color-dark-tint: #3b3b3b;
+
+	--ion-color-medium: #a9a9a9;
+	--ion-color-medium-rgb: 169, 169, 169;
+	--ion-color-medium-contrast: #000000;
+	--ion-color-medium-contrast-rgb: 0, 0, 0;
+	--ion-color-medium-shade: #959595;
+	--ion-color-medium-tint: #b2b2b2;
+
+	--ion-color-light: #f4f4f4;
+	--ion-color-light-rgb: 244, 244, 244;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0, 0, 0;
+	--ion-color-light-shade: #d7d7d7;
+	--ion-color-light-tint: #f5f5f5;
+}
+
+a {
+	color: var(--ion-color-tertiary, #447edd);
+}

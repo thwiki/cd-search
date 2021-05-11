@@ -1,0 +1,45 @@
+thcd-track {
+	display: block;
+	width: 100%;
+
+	a.track-link {
+		color: var(--ion-color-tertiary);
+		text-decoration: none;
+
+		&:active,
+		&:hover,
+		&:focus {
+			color: var(--ion-color-primary);
+		}
+	}
+
+	.track-thumbnail {
+		width: 80px;
+		height: 80px;
+	}
+
+	.track-field {
+		--inner-border-width: 0 0 0 0;
+		--min-height: 24px;
+
+		ion-label.track-cell {
+			margin: 0;
+			overflow: auto !important;
+			white-space: normal !important;
+			flex-basis: 150px;
+			width: 150px;
+		}
+	}
+
+	.track-info {
+		width: 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	thcd-track {
+		ion-item.track-base::part(native) {
+			flex-direction: column !important;
+		}
+	}
+}
