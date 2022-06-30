@@ -2,7 +2,7 @@ import { actionSheetController } from '@ionic/core';
 import { Component, Host, h, Prop, State } from '@stencil/core';
 import { DataValuePrinter } from '@apis/smw/data-types';
 import { FieldElement, Item, ItemField, ItemPropTypeid } from '@utils/options';
-import { Bind, copyText } from '@utils/utils';
+import { copyText } from '@utils/utils';
 
 @Component({
 	tag: 'thcd-track',
@@ -27,8 +27,7 @@ export class ThcdTrack {
 		});
 	}
 
-	@Bind
-	async handleButtonClick(prop: ItemField, value: string) {
+	handleButtonClick = async (prop: ItemField, value: string) => {
 		const inputElement = FieldElement.get(prop);
 		const hasValue = await inputElement.hasValue(value);
 		const actionSheet = await actionSheetController.create({
@@ -67,7 +66,7 @@ export class ThcdTrack {
 		});
 
 		await actionSheet.present();
-	}
+	};
 
 	render() {
 		return (

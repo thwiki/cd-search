@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import { ItemCriteria, ItemField } from '@utils/options';
 import { RouteQuery } from '@utils/router';
-import { beautifyUrl, Bind } from '@utils/utils';
+import { beautifyUrl } from '@utils/utils';
 import { InputBaseValueChangedEventDetial, InputBaseValueChangeEventDetial } from '../input-base/input-base';
 import { FilterOption, filterOptions } from './filter-options';
 
@@ -26,8 +26,7 @@ export class ThcdFilters {
 		this.updateOptions();
 	}
 
-	@Bind
-	handleValueChange(event: CustomEvent<InputBaseValueChangeEventDetial>) {
+	handleValueChange = (event: CustomEvent<InputBaseValueChangeEventDetial>) => {
 		const currentHref = location.href;
 		const url = new URL(currentHref);
 		for (const key in event.detail) {
@@ -43,10 +42,9 @@ export class ThcdFilters {
 		if (beautifyUrl(currentHref) !== newHref) {
 			window.history.pushState(null, '', newHref);
 		}
-	}
+	};
 
-	@Bind
-	handleValueChanged(event: CustomEvent<InputBaseValueChangedEventDetial>) {
+	handleValueChanged = (event: CustomEvent<InputBaseValueChangedEventDetial>) => {
 		let changed = false;
 		for (const key in event.detail) {
 			if (Object.prototype.hasOwnProperty.call(event.detail, key)) {
@@ -60,7 +58,7 @@ export class ThcdFilters {
 		if (changed) {
 			this.criteriaChange.emit(this.criteria);
 		}
-	}
+	};
 
 	updateOptions() {
 		filterOptions.forEach((option) => {

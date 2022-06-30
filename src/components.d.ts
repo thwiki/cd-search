@@ -58,6 +58,22 @@ export namespace Components {
         "item": Item;
     }
 }
+export interface InputChecklistCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputChecklistElement;
+}
+export interface InputRangeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputRangeElement;
+}
+export interface InputTaglistCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputTaglistElement;
+}
+export interface ThcdFiltersCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLThcdFiltersElement;
+}
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
@@ -150,20 +166,20 @@ declare namespace LocalJSX {
         "language"?: string;
     }
     interface InputChecklist {
-        "onValue-change"?: (event: CustomEvent<InputBaseValueChangeEventDetial>) => void;
-        "onValue-changed"?: (event: CustomEvent<InputBaseValueChangedEventDetial>) => void;
+        "onValue-change"?: (event: InputChecklistCustomEvent<InputBaseValueChangeEventDetial>) => void;
+        "onValue-changed"?: (event: InputChecklistCustomEvent<InputBaseValueChangedEventDetial>) => void;
         "option"?: FilterOption;
         "query"?: string;
     }
     interface InputRange {
-        "onValue-change"?: (event: CustomEvent<InputBaseValueChangeEventDetial>) => void;
-        "onValue-changed"?: (event: CustomEvent<InputBaseValueChangedEventDetial>) => void;
+        "onValue-change"?: (event: InputRangeCustomEvent<InputBaseValueChangeEventDetial>) => void;
+        "onValue-changed"?: (event: InputRangeCustomEvent<InputBaseValueChangedEventDetial>) => void;
         "option"?: FilterOption;
         "query"?: string;
     }
     interface InputTaglist {
-        "onValue-change"?: (event: CustomEvent<InputBaseValueChangeEventDetial>) => void;
-        "onValue-changed"?: (event: CustomEvent<InputBaseValueChangedEventDetial>) => void;
+        "onValue-change"?: (event: InputTaglistCustomEvent<InputBaseValueChangeEventDetial>) => void;
+        "onValue-changed"?: (event: InputTaglistCustomEvent<InputBaseValueChangedEventDetial>) => void;
         "option"?: FilterOption;
         "query"?: string;
     }
@@ -175,7 +191,7 @@ declare namespace LocalJSX {
     }
     interface ThcdFilters {
         "criteria"?: ItemCriteria;
-        "onCriteria-change"?: (event: CustomEvent<ItemCriteria>) => void;
+        "onCriteria-change"?: (event: ThcdFiltersCustomEvent<ItemCriteria>) => void;
         "query"?: RouteQuery;
     }
     interface ThcdI18n {

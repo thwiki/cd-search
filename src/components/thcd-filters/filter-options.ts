@@ -31,7 +31,9 @@ export interface FilterOption {
 	type: FilterInputType;
 	collapse?: boolean;
 	content?: {
-		sliderOptions?: any /*Options*/;
+		sliderOptions?: {
+			translate?: (v: number) => string;
+		} /*Options*/;
 		min?: number;
 		max?: number;
 		list?: Array<ChecklistItem>;

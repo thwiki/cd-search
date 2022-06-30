@@ -1,7 +1,6 @@
 import { CheckboxChangeEventDetail, modalController } from '@ionic/core';
 import { Component, Host, h, Prop, State, Watch, Event, EventEmitter, Method, Element } from '@stencil/core';
 import { FieldElement } from '@utils/options';
-import { Bind } from '@utils/utils';
 import { InputBase, InputBaseValueChangedEventDetial, InputBaseValueChangeEventDetial } from '../input-base/input-base';
 import { FilterOption } from '../thcd-filters/filter-options';
 
@@ -54,18 +53,16 @@ export class InputTaglist implements InputBase {
 		this.queryChanged();
 	}
 
-	@Bind
-	handleValueChange(e: CustomEvent<CheckboxChangeEventDetail>) {
+	handleValueChange = (e: CustomEvent<CheckboxChangeEventDetail>) => {
 		const {
 			detail: { checked, value },
 		} = e;
 		this.setChecked(value, checked);
-	}
+	};
 
-	@Bind
-	async handleSearchFocus() {
+	handleSearchFocus = async () => {
 		await this.presentModal();
-	}
+	};
 
 	get value(): string[] {
 		return this._value;

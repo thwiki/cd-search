@@ -1,7 +1,6 @@
 import { RangeChangeEventDetail } from '@ionic/core';
 import { Component, Host, h, Prop, State, Event, EventEmitter, Watch, Method, Element } from '@stencil/core';
 import { FieldElement } from '@utils/options';
-import { Bind } from '@utils/utils';
 import { InputBase, InputBaseValueChangedEventDetial, InputBaseValueChangeEventDetial } from '../input-base/input-base';
 import { FilterOption } from '../thcd-filters/filter-options';
 
@@ -81,14 +80,13 @@ export class InputRange implements InputBase {
 		if (this._value[1] == null) this._value[1] = this.option.content.max;
 	}
 
-	@Bind
-	handleValueChange(e: CustomEvent<RangeChangeEventDetail>) {
+	handleValueChange = (e: CustomEvent<RangeChangeEventDetail>) => {
 		if (typeof e.detail.value === 'number') {
 			this.value = [e.detail.value, e.detail.value];
 		} else {
 			this.value = [e.detail.value.lower, e.detail.value.upper];
 		}
-	}
+	};
 
 	get value(): [number, number] {
 		return this._value;
@@ -126,6 +124,7 @@ export class InputRange implements InputBase {
 	}
 
 	render() {
+		const hasTranslate = typeof this.option.content?.sliderOptions?.translate === 'function';
 		return (
 			<Host id={this.option.id}>
 				<ion-range
@@ -136,11 +135,16 @@ export class InputRange implements InputBase {
 					step={1}
 					min={this.option.content.min}
 					max={this.option.content.max}
+					pinFormatter={hasTranslate ? this.option.content.sliderOptions.translate : undefined}
 					value={{ lower: this._value[0], upper: this._value[1] }}
 					onIonChange={this.handleValueChange}
 				>
-					<ion-label slot="start">{this.option.content.min}</ion-label>
-					<ion-label slot="end">{this.option.content.max}</ion-label>
+					<ion-label slot="start">
+						{hasTranslate ? this.option.content.sliderOptions.translate(this.option.content.min) : this.option.content.min}
+					</ion-label>
+					<ion-label slot="end">
+						{hasTranslate ? this.option.content.sliderOptions.translate(this.option.content.max) : this.option.content.max}
+					</ion-label>
 				</ion-range>
 			</Host>
 		);

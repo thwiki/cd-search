@@ -1,15 +1,3 @@
-export function Bind(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-	return {
-		get() {
-			const bound = descriptor.value.bind(this);
-			Object.defineProperty(this, propertyKey, {
-				value: bound,
-			});
-			return bound;
-		},
-	};
-}
-
 export function beautifyUrl(url: string) {
 	return url.replace(/%3A/gi, ':').replace(/%21/gi, '!');
 }

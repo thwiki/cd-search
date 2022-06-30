@@ -2,7 +2,6 @@ import { Component, h, Prop, State } from '@stencil/core';
 import { SearchRequest } from '@apis/search/search-request';
 import { Item } from '@utils/options';
 import { RouteQuery, injectQuery, disinjectQuery } from '@utils/router';
-import { Bind } from '@utils/utils';
 
 @Component({
 	tag: 'app-home',
@@ -27,18 +26,16 @@ export class AppHome {
 		disinjectQuery(this);
 	}
 
-	@Bind
-	async handleSearchClick(event: MouseEvent) {
+	handleSearchClick = async (event: MouseEvent) => {
 		this.request = SearchRequest.newFromCriterion({ ...this.filters.criteria });
 		console.log(this.request);
 		if (this.request) {
 			await this.request.getCount();
 			await this.loadResult();
 		}
-	}
+	};
 
-	@Bind
-	async loadResult() {
+	loadResult = async () => {
 		if (this.request != null) {
 			await this.request.getNext();
 			console.log(this.result.length, this.request.count);
@@ -50,7 +47,7 @@ export class AppHome {
 			}
 			this.infiniteScroll.complete();
 		}
-	}
+	};
 
 	render() {
 		console.log('render');

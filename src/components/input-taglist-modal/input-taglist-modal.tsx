@@ -1,7 +1,6 @@
 import { SearchbarChangeEventDetail } from '@ionic/core';
 import { Component, Host, h, Element, Prop, State } from '@stencil/core';
 import { Options } from '@utils/options';
-import { Bind } from '@utils/utils';
 import { FilterOption, TaglistItem } from '../thcd-filters/filter-options';
 
 @Component({
@@ -24,8 +23,7 @@ export class InputTaglistModal {
 
 	@State() suggestions: TaglistItem[] = [];
 
-	@Bind
-	handleSearchChange(e: CustomEvent<SearchbarChangeEventDetail>) {
+	handleSearchChange = (e: CustomEvent<SearchbarChangeEventDetail>) => {
 		const typeahead = e.detail.value;
 		if (this.typeahead.trim() !== typeahead.trim()) {
 			this.typeahead = typeahead;
@@ -34,14 +32,13 @@ export class InputTaglistModal {
 				this.suggestions = await this.search(this.typeahead);
 			}, 500);
 		}
-	}
+	};
 
-	@Bind
-	dismissModal() {
+	dismissModal = () => {
 		(this.element.closest('ion-modal') as any).dismiss({
 			selected: this.selected,
 		});
-	}
+	};
 
 	connectedCallback() {}
 
@@ -117,6 +114,9 @@ export class InputTaglistModal {
 	}
 
 	private async remoteSearch(term: string) {
+		if (term.trim() === '') {
+			return [];
+		}
 		this.loading = true;
 		const result = await (
 			await fetch(

@@ -1,5 +1,4 @@
 import { Component, h, Prop, Watch, Method } from '@stencil/core';
-import { Bind } from '@utils/utils';
 import { LocaleService } from '@locale';
 import { SelectChangeEventDetail } from '@ionic/core';
 import { Subscription } from 'rxjs';
@@ -16,7 +15,6 @@ export class AppRoot {
 	language: string;
 
 	@Watch('language')
-	@Bind
 	handleLanguageChange() {
 		this.locale.use(this.language);
 	}
@@ -38,10 +36,9 @@ export class AppRoot {
 		this.localeSubscription?.unsubscribe();
 	}
 
-	@Bind
-	async handleLanguageChange2(event: CustomEvent<SelectChangeEventDetail<any>>) {
+	handleLanguageChange2 = async (event: CustomEvent<SelectChangeEventDetail<any>>) => {
 		await this.locale.use(event.detail.value);
-	}
+	};
 
 	render() {
 		return (

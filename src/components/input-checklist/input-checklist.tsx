@@ -1,7 +1,6 @@
 import { CheckboxChangeEventDetail } from '@ionic/core';
 import { Component, Host, h, Prop, State, Event, EventEmitter, Watch, Method, Element } from '@stencil/core';
 import { FieldElement } from '@utils/options';
-import { Bind } from '@utils/utils';
 import { InputBase, InputBaseValueChangedEventDetial, InputBaseValueChangeEventDetial } from '../input-base/input-base';
 import { FilterOption } from '../thcd-filters/filter-options';
 
@@ -52,13 +51,12 @@ export class InputChecklist implements InputBase {
 		this.queryChanged();
 	}
 
-	@Bind
-	handleValueChange(e: CustomEvent<CheckboxChangeEventDetail>) {
+	handleValueChange = (e: CustomEvent<CheckboxChangeEventDetail>) => {
 		const {
 			detail: { checked, value },
 		} = e;
 		this.setChecked(value, checked);
-	}
+	};
 
 	get value(): string[] {
 		return this._value;

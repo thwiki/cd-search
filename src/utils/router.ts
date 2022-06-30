@@ -26,7 +26,7 @@ function handleStateChange(url?: string) {
 
 const pushState = window.history.pushState;
 window.history.pushState = function (...args) {
-	handleStateChange(args[2]);
+	handleStateChange(args[2] instanceof URL ? args[2].href : args[2]);
 	return pushState.apply(history, args);
 };
 
